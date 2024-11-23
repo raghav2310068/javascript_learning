@@ -53,6 +53,8 @@ console.log(starters, mainCourse);
 let [primary, , secondary] = restaurant.categories;
 console.log(primary, secondary);
 
+swapping of variable 
+
 let temp = primary;
 primary = secondary;
 secondary = temp;
