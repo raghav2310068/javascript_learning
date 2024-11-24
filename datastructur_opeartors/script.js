@@ -29,7 +29,50 @@ const restaurant = {
       close: 24,
     },
   },
+  orderDelievery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = "22:00",
+    address,
+  }) {
+    console.log(
+      `order recieved!! your ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will be orderd to ${this.address} at ${this.time}`
+    );
+  },
 };
+
+
+let arr=[1,2,3]
+let newArr=[]
+
+/*  object destructuring  ...
+let { name, categories, openingHours } = restaurant;
+ console.log(name, categories, openingHours);
+ const {
+   name: restaurantName,
+   openingHours: hours,
+   categories: tags,
+ } = restaurant;
+ console.log(restaurantName, hours, tags);
+
+ const { menu = [], starterMenu: starters = [] } = restaurant;
+ console.log(menu, starters);
+
+ //mutating value
+ let a = 111;
+ let b = 222;
+ console.log(a, b);
+
+ let obj = { a: 1, b: 2, c: 3 };
+ ({ a, b } = obj);
+ console.log(a, b);
+
+console.log(openingHours);
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+
+console.log(o, c);
 
 /*
 const arr = [1, 2, 3];
@@ -65,6 +108,8 @@ console.log(primary, secondary);
 */
 
 /*
+
 [a = 1, b = 1, c = 1] = [2, , 2];
 console.log(a, b, c);
+
 */
