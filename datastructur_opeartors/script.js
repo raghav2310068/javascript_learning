@@ -49,14 +49,52 @@ const restaurant = {
   },
 };
 
-// (or operator ke saath agar humne koi datatype liya h (other than boolean) than if the fisrt one is true value then we get the first value as it is otherwise it will go second  )
+////////////////////////////////////////////////////////////////////
+/*
+const rest1 = {
+  name: "la pizza",
+  numguest: 10,
+};
+const rest2 = {
+  name: "la pasta",
+  owner: "raghav",
+};
 
-// or operation can be performed on any datatype can return any datatype or short circuiting
-// console.log(3 || "jonas");
-// console.log("" || "jonas");
-// console.log(true || false);
-// console.log(undefined || null);
-// console.log("" || 0 || "hello" || 2 || null);
+ rest1.numguest = rest1.numguest || 20;
+ rest2.numguest = rest2.numguest || 20;
+ console.log(rest1);
+ console.log(rest2);
+
+ JUST LIKE WE WRITE K+=1 TO WRITE K=H+1 WE CAN WRITE rest1.numguest ||=20 to write rest1.numguest=rest1.numguest||20
+
+ rest1.numguest ||= 20;
+ rest2.numguest ||= 20;
+ console.log(rest1);
+ console.log(rest2);
+
+ similarly
+
+rest1.numguest &&= 20;
+rest2.numguest &&= 20;
+console.log(rest1);
+console.log(rest2); 
+
+similarly
+rest1.numguest ??= 20;
+rest2.numguest ??= 20;
+console.log(rest1);
+console.log(rest2);
+*/
+////////////////////////////////////////////////////////////////////////////////////////
+/*
+ (or operator ke saath agar humne koi datatype liya h (other than boolean) than if the fisrt one is true value then we get the first value as it is otherwise it will go second  )
+
+ or operation can be performed on any datatype can return any datatype or short circuiting
+ console.log(3 || "jonas");
+ console.log("" || "jonas");
+ console.log(true || false);
+ console.log(undefined || null);
+ console.log("" || 0 || "hello" || 2 || null);
 
 const guest1 = restaurant.numguest ? restaurant.numguest : 10;
 const guest2 = restaurant.numguest || 23;
@@ -65,6 +103,10 @@ console.log(guest2);
 
 // and operation phele false value return kr dega aage dekhta hi nhi h pr agar koi falsy value nhi h to wo last value return krega
 console.log("jonas" && 23 && null && 0);
+
+knowledge collasing operator(??) is very similar to or operator
+
+*/
 
 /*
 // SPREAD operator(...) is used in right side of assignment operator
