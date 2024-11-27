@@ -39,11 +39,100 @@ const restaurant = {
       `order recieved!! your ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will be orderd to ${this.address} at ${this.time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`your pasta is with ${ing1},${ing2} and ${ing3} is ready`);
+  },
+  orderpizza: function (mainIngredient, ...secondaryIngredient) {
+    console.log(
+      `the main ingredient is ${mainIngredient} and the secondary ingredient are ${secondaryIngredient}`
+    );
+  },
 };
 
+// (or operator ke saath agar humne koi datatype liya h (other than boolean) than if the fisrt one is true value then we get the first value as it is otherwise it will go second  )
 
-let arr=[1,2,3]
-let newArr=[]
+// or operation can be performed on any datatype can return any datatype or short circuiting
+// console.log(3 || "jonas");
+// console.log("" || "jonas");
+// console.log(true || false);
+// console.log(undefined || null);
+// console.log("" || 0 || "hello" || 2 || null);
+
+const guest1 = restaurant.numguest ? restaurant.numguest : 10;
+const guest2 = restaurant.numguest || 23;
+console.log(guest1);
+console.log(guest2);
+
+// and operation phele false value return kr dega aage dekhta hi nhi h pr agar koi falsy value nhi h to wo last value return krega
+console.log("jonas" && 23 && null && 0);
+
+/*
+// SPREAD operator(...) is used in right side of assignment operator
+
+const arr = [1, 2, ...[4, 5, 6]];
+
+// rest operator is used left side of assignment operator destructuring ke waqt kam aata h
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+//rest wale function m multiple arguments pass kr skte h fir wo ek single array me ho jayenge
+
+let [Pizza, , Risotto, ...others] = [
+  ...restaurant.starterMenu,
+  ...restaurant.mainMenu,
+];
+const addition = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 10];
+addition(1, 2, 3);
+addition(1, 2, 3, 5, 9);
+addition(1, 2, 3, 5, 7, 8, 10, 9);
+addition(...arr1);
+const ingredient = ["cheese", "corn", " margreta", " jellypie"];
+const ing1 = ["cheese"];
+restaurant.orderpizza(...ing1);
+restaurant.orderpizza(...ingredient);
+*/
+
+/*
+
+
+// SPREAD OPERATOR (...)
+let arr = [1, 2, 3];
+let newArr = [4, 5, arr[2], arr[1], arr[0]];
+let copyNewarr = [4, 5, ...arr];
+
+let mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+// join two arrays
+let menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+// REAL WORLD EXAMPLE
+let ingredient = [
+  prompt(`enter ing1`),
+  prompt(`enter ing2`),
+  prompt(`enter ing3`),
+];
+restaurant.orderPasta(ingredient[0], ingredient[1], ingredient[2]);
+restaurant.orderPasta(...ingredient);
+
+// NOW A DAYS OBJECTS CAN ALSO USE SPREAD OPERATOR;
+
+let newRestraunt = { foundedIn: 1998, ...restaurant, foundedby: "raghav" };
+console.log(newRestraunt);
+console.log(restaurant);
+
+newRestraunt.name=indian;
+// YAH  PR JO NEW RETRAURANT BANAYA H WO COPY BNI H RESTRAU KI ISLIE AGAR KOI CHANGE NEWRESTRAU M HOGA TO WO RESTAU ME REFLECT NHI HOGA AND VIVE VERSA.
+// iterables : strings array sets maps but not obj
+
+*/
 
 /*  object destructuring  ...
 let { name, categories, openingHours } = restaurant;
