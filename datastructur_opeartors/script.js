@@ -1,5 +1,20 @@
 "use strict";
 
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for a later exercise
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
@@ -14,21 +29,8 @@ const restaurant = {
   order: function (starterIndex, mainCourseIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainCourseIndex]];
   },
+  openingHours,
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
   orderDelievery: function ({
     starterIndex = 1,
     mainIndex = 0,
@@ -48,6 +50,40 @@ const restaurant = {
     );
   },
 };
+let menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+
+const properties = Object.keys(openingHours); //it will return the array of keys that are presenty in that specific object
+console.log(properties);
+let str = `we are open for ${properties.length} days`;
+for (let day of properties) {
+  str += ` ${day} `;
+}
+console.log(str);
+
+/************************************************************** */
+/*
+ optional chaining
+console.log(restaurant.openingHours.mon?.open); // here open property will be consider only if the properties prior to ? exist otherwise return undefined
+let days = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+for (let day of days) {
+  let hours = restaurant.openingHours[day]?.open ?? "closed";
+  console.log(`on ${day} we open at ${hours}`);
+}
+console.log(restaurant.orderPasta?.(0, 3, 2) ?? "method does not exist");
+console.log(restaurant.orderhappines?.(0, 2) ?? "method does not exist");
+*/
+
+/******************************************************** */
+/*
+// for of loop
+for (let items of menu) {
+  console.log(items);
+}
+console.log(...menu.entries());
+for (let [i, el] of menu.entries()) {
+  console.log(`${i}:${el}`);
+}
+*/
 
 ////////////////////////////////////////////////////////////////////
 /*
