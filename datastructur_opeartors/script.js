@@ -52,6 +52,63 @@ const restaurant = {
 };
 let menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 
+// MAPS PART 2 
+
+
+/************************************ */
+/*
+MAPS PART 1
+const rest = new Map();
+rest.set("name", "la pizzeria");
+rest.set(1, "delhi , india");
+rest.set(2, "geneva germany");
+console.log(rest);
+rest
+  .set("category", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 10)
+  .set("close", 22)
+  .set(true, "we are open :D")
+  .set(false, "we are closed");
+console.log(rest);
+console.log(rest.get("name"));
+console.log(rest.get("open"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+*/
+
+/******************************************** */
+
+/*
+//SETS KEVAL UNIQUE VALUE STOR KRTA H AGAR KOI DUPLICATE VALUE AA JATI H TO USE IGNORE KR DETA H
+const orderset = new Set([
+  "pizza",
+  "pasta",
+  "risotto",
+  "pizza",
+  "pizza",
+  "risotto",
+  "pasta",
+]);
+console.log(orderset);
+console.log(orderset.size);
+console.log(orderset.has("pizza"));
+console.log(orderset.has("bread"));
+orderset.add("garlic bread");
+orderset.add("garlic bread");
+orderset.delete("risotto");
+orderset.clear();
+
+//example
+let staff = ["waiter", "cheff", "waiter", "manager", "cheff", "manager"];
+const uniqueStaff = new Set(staff);
+console.log(...uniqueStaff);
+*/
+
+/**************************************************** */
+/*
 const properties = Object.keys(openingHours); //it will return the array of keys that are presenty in that specific object
 console.log(properties);
 let str = `we are open for ${properties.length} days`;
@@ -59,7 +116,7 @@ for (let day of properties) {
   str += ` ${day} `;
 }
 console.log(str);
-
+*/
 /************************************************************** */
 /*
  optional chaining
