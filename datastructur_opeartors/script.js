@@ -52,8 +52,21 @@ const restaurant = {
 };
 let menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 
-// MAPS PART 2 
+//WORKING WITH STRINGS  👇
 
+const airline = "air india ";
+const plane = "A2300BU";
+for (let i of airline) {
+  console.log(i);
+}
+console.log(airline.length);
+console.log(airline.indexOf("i"));
+console.log(airline.lastIndexOf("i"));
+console.log(airline.slice(5));
+console.log(airline.slice(5,7));
+
+/****************** */
+// MAPS PART 2
 
 /************************************ */
 /*
