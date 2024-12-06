@@ -39,18 +39,36 @@
 const poll = {
   question: "What is your favourite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3:c++"],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  // answers: new Array(4).fill(0),
+  answerArr: [0, 0, 0, 0],
   registerNewAnswer() {
-    let answer = prompt(
-      `What is your favourite programming language \n 0:javascript \n 1: python \n 2:rust \n 3: c++`
+    let answer = Number(
+      prompt(
+        `What is your favourite programming language \n 0:javascript \n 1: python \n 2:rust \n 3: c++`
+      )
     );
+    if (answer > 4) {
+      alert("please enter a valid answer");
+    } else {
+      poll.answerArr[answer] += 1;
+      let results = Number(
+        prompt(`select an option for  result format \n 1: Array \n 2: String`)
+      );
+      if (results == 1) {
+        console.log(poll.answerArr);
+      } else if (results == 2) {
+        console.log(`answer are ${poll.answerArr.toString(",")}`);
+      } else {
+        alert(`select an option for valid result`);
+      }
+    }
+
+    // console.log(poll.answerArr);
   },
 };
 const varna = document.getElementById("poll1");
-console.log(varna);
+// console.log(varna);
 
-varna.addEventListener("click", poll.registerNewAnswer());
+varna.addEventListener("click", poll.registerNewAnswer);
 
 /****************************************************** */
 
