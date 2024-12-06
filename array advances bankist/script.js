@@ -71,6 +71,42 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+const arr=['a','b','c','d','e','f','g'];
+
+// slice method ek nayi array bnata h lein jo purani hoti h use change nhi krta 
+// arrayname.slice(startingindex,endindx)
+console.log(arr.slice(2));
+console.log(arr.slice(2,4));
+console.log(arr.slice(-5));
+
+//splice is similar to slice but the differnce is that ye original wali array me se slice array delete kr deti h ;
+// console.log(arr.splice(-2));
+// console.log(arr);
+
+// at location negative doge to jo index diya HOGA WO PECHE SE dekhke print kr dega
+console.log(arr.at(1));
+console.log(arr.at(5));
+console.log(arr.at(-1));
+
+// agar kisi array ko string me convert krna h to hum join ka use kr skte h or jo ism parameter pass krenge wo seperatr ka kam krega
+console.log(arr.join(','));
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+for(const [index,mov] of movements.entries()){``
+  if(mov<0){
+    console.log(`${index+1} : you withdraw ${Math.abs(mov)} rupees `);
+    
+  }
+  else{
+    console.log(`${index+1} : you deposited ${Math.abs(mov)} rupees `);
+
+  }
+
+}
+
+
+
+
