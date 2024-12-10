@@ -61,6 +61,21 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displaymovements=function(movements){
+  containerMovements.innerHTML=""
+  movements.forEach(function(mov,i)
+  {
+  let status=mov>0 ? "deposit":"withdrawal";
+  const html=` <div class="movements__row">
+          <div class="movements__type movements__type--${status}">${i+1} ${status}</div>
+          <div class="movements__date">3 days ago</div>
+          <div class="movements__value">${mov}€</div>
+        </div>`
+        containerMovements.insertAdjacentHTML("afterbegin",html); 
+});
+}
+displaymovements(account1.movements)
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -95,17 +110,16 @@ console.log(arr.at(-1));
 console.log(arr.join(','));
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-for(const [index,mov] of movements.entries()){``
+for(const [index,mov] of movements.entries()){
   if(mov<0){
     console.log(`${index+1} : you withdraw ${Math.abs(mov)} rupees `);
     
   }
   else{
     console.log(`${index+1} : you deposited ${Math.abs(mov)} rupees `);
-
   }
-
 }
+console.log(`****************for each***************`)
 
 
 
