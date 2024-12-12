@@ -221,22 +221,25 @@ console.log(movementsUsdArrow);
 console.log(movementsDescriptions);
 
 */
+/*******************************    ******************************* */
+/*
 
-// FILTER METHOD
-// arrname.filter(function(arguments){
-//   return condition
-// })
+FILTER METHOD
+arrname.filter(function(arguments){
+  return condition
+})
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const deposit = movements.filter(function (mov) {
   return mov > 0;
 });
-// console.log(deposit);
+console.log(deposit);
 const withdraw = movements.filter((mov) => mov < 0);
-// console.log(withdraw);
+console.log(withdraw);
 
-// reduce method
-// arrayname.reduce(function(accumulator,item,index,array){function})
+reduce method
+arrayname.reduce(function(accumulator,item,index,array){function})
 
 let balance = movements.reduce((acc, mov) => acc + mov, 0);
-// console.log(balance);
+ console.log(balance);
+*/
