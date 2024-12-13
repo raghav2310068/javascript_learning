@@ -77,6 +77,8 @@ createUsername(accounts);
 
 const updateUI = function (account) {
 
+  labelWelcome.textContent=`Welcome Back , ${account.owner.split(" ")[0]}`
+
   account.totalBalance = account.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${account.totalBalance} €`;
 
@@ -114,7 +116,7 @@ const updateUI = function (account) {
       containerMovements.insertAdjacentHTML("afterbegin", html);
     });
   };
-  // displaymovements(account)
+  displaymovements(account)
   
 };
 let currentAccount;
@@ -129,7 +131,7 @@ btnLogin.addEventListener("click", function (e) {
     currentAccount != undefined &&
     currentAccount.pin === Number(inputLoginPin.value)
   ) {
-    console.log("hello");
+    // console.log("hello");
     updateUI(currentAccount);
     containerApp.style.opacity="100"
     inputLoginPin.value = inputLoginUsername.value = "";
@@ -139,24 +141,44 @@ btnLogin.addEventListener("click", function (e) {
   } //console.log("login");
   
   
-  console.log(currentAccount);
-  btnTransfer.addEventListener("click",function(e){
-    e.preventDefault();
-    let transferAmount=Number(inputTransferAmount.value);
-    let recieverAccount=accounts.find(acc=>acc.userName===inputTransferTo.value)
-    console.log(recieverAccount);
-    if(recieverAccount?.recieverAccount!=currentAccount&&transferAmount<=currentAccount.totalBalance&&transferAmount>0)
-    {
-      console.log("done");
-      currentAccount.movements.push(-transferAmount);
-      recieverAccount.movements.push(transferAmount);
-      console.log(...currentAccount.movements);
-      console.log(...recieverAccount.movements);
-      updateUI(currentAccount);
-    }
+  // console.log(currentAccount);
+  
+})
+
+btnTransfer.addEventListener("click",function(e){
+  e.preventDefault();
+  let transferAmount=Number(inputTransferAmount.value);
+  let recieverAccount=accounts.find(acc=>acc.userName===inputTransferTo.value)
+  // console.log(recieverAccount);
+  if(recieverAccount?.recieverAccount!=currentAccount&&transferAmount<=currentAccount.totalBalance&&transferAmount>0)
+  {
+    // console.log("done");
+    currentAccount.movements.push(-transferAmount);
+    recieverAccount.movements.push(transferAmount);
+    // console.log(...currentAccount.movements);
+    // console.log(...recieverAccount.movements);
+    updateUI(currentAccount);
+    inputTransferAmount.value=inputTransferTo.value="";
+    inputTransferAmount.blur();
+  }
+  
+})
+
+btnClose.addEventListener("click",function(e){
+  e.preventDefault();
+  if(inputCloseUsername.value===currentAccount.userName&&Number(inputClosePin.value)===currentAccount.pin){
+    // console.log("good");
+   let index =accounts.findIndex(acc=>acc.userName===inputCloseUsername.value)
+    console.log(index);
+    accounts.splice(index,1)
+    inputClosePin.value=inputCloseUsername.value=""
+    inputClosePin.blur()
+    containerApp.style.opacity="0"
     
-})
-})
+   } 
+    
+  }
+ )
 // displaySummary(account1)
 // console.log(account1.userName);
 // console.log(account2.userName);
@@ -265,4 +287,18 @@ arrayname.reduce(function(accumulator,item,index,array){function})
 
 let balance = movements.reduce((acc, mov) => acc + mov, 0);
  console.log(balance);
+*/
+/*
+  // find method 
+  
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// let say we have to find the first element that is negative
+
+let firstNegative=movements.find(mov=>mov<0);
+console.log(firstNegative);
+
+//findindex mthod
+// let say we have to find the index of first element that is negative
+let firstNegativeIndex=movements.findIndex(acc=>acc<0)
+console.log(firstNegativeIndex);
 */
