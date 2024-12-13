@@ -134,6 +134,9 @@ btnLogin.addEventListener("click", function (e) {
     
   } //console.log("login");
 });
+btnTransfer.addEventListener(function(e){
+  e.preventDefault();
+})
 // displaySummary(account1)
 // console.log(account1.userName);
 // console.log(account2.userName);
