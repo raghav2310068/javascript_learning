@@ -76,8 +76,7 @@ const createUsername = function (accArr) {
 createUsername(accounts);
 
 const updateUI = function (account) {
-
-  labelWelcome.textContent=`Welcome Back , ${account.owner.split(" ")[0]}`
+  labelWelcome.textContent = `Welcome Back , ${account.owner.split(" ")[0]}`;
 
   account.totalBalance = account.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${account.totalBalance} €`;
@@ -116,8 +115,7 @@ const updateUI = function (account) {
       containerMovements.insertAdjacentHTML("afterbegin", html);
     });
   };
-  displaymovements(account)
-  
+  displaymovements(account);
 };
 let currentAccount;
 btnLogin.addEventListener("click", function (e) {
@@ -133,52 +131,65 @@ btnLogin.addEventListener("click", function (e) {
   ) {
     // console.log("hello");
     updateUI(currentAccount);
-    containerApp.style.opacity="100"
+    containerApp.style.opacity = "100";
     inputLoginPin.value = inputLoginUsername.value = "";
     inputLoginPin.blur();
     // displaymovements(currentAccount);
-    
   } //console.log("login");
-  
-  
-  // console.log(currentAccount);
-  
-})
 
-btnTransfer.addEventListener("click",function(e){
+  // console.log(currentAccount);
+});
+
+btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
-  let transferAmount=Number(inputTransferAmount.value);
-  let recieverAccount=accounts.find(acc=>acc.userName===inputTransferTo.value)
+  let transferAmount = Number(inputTransferAmount.value);
+  let recieverAccount = accounts.find(
+    (acc) => acc.userName === inputTransferTo.value
+  );
   // console.log(recieverAccount);
-  if(recieverAccount?.recieverAccount!=currentAccount&&transferAmount<=currentAccount.totalBalance&&transferAmount>0)
-  {
+  if (
+    recieverAccount!=undefined && recieverAccount.userName != currentAccount.userName &&
+    transferAmount <= currentAccount.totalBalance &&
+    transferAmount > 0
+  ) {
     // console.log("done");
     currentAccount.movements.push(-transferAmount);
     recieverAccount.movements.push(transferAmount);
     // console.log(...currentAccount.movements);
     // console.log(...recieverAccount.movements);
     updateUI(currentAccount);
-    inputTransferAmount.value=inputTransferTo.value="";
+    inputTransferAmount.value = inputTransferTo.value = "";
     inputTransferAmount.blur();
+  }
+});
+
+btnClose.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.userName &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    // console.log("good");
+    let index = accounts.findIndex(
+      (acc) => acc.userName === inputCloseUsername.value
+    );
+    console.log(index);
+    accounts.splice(index, 1);
+    inputClosePin.value = inputCloseUsername.value = "";
+    inputClosePin.blur();
+    containerApp.style.opacity = "0";
+}});
+btnLoan.addEventListener('click',function(e){
+  e.preventDefault();
+  let loanAmount=Number(inputLoanAmount.value);
+  // console.log(loanAmount);
+  if(currentAccount.movements.some(mov=> mov>0.1*loanAmount)){
+    currentAccount.movements.push(loanAmount);
+    updateUI(currentAccount)
+    
   }
   
 })
-
-btnClose.addEventListener("click",function(e){
-  e.preventDefault();
-  if(inputCloseUsername.value===currentAccount.userName&&Number(inputClosePin.value)===currentAccount.pin){
-    // console.log("good");
-   let index =accounts.findIndex(acc=>acc.userName===inputCloseUsername.value)
-    console.log(index);
-    accounts.splice(index,1)
-    inputClosePin.value=inputCloseUsername.value=""
-    inputClosePin.blur()
-    containerApp.style.opacity="0"
-    
-   } 
-    
-  }
- )
 // displaySummary(account1)
 // console.log(account1.userName);
 // console.log(account2.userName);
@@ -302,3 +313,69 @@ console.log(firstNegative);
 let firstNegativeIndex=movements.findIndex(acc=>acc<0)
 console.log(firstNegativeIndex);
 */
+/*
+
+// findLastIndex,findFirstIndex dono hi last se traversal start krte h
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const latestLargeMovement=movements.findLastIndex(mov=> mov>1000)
+console.log(latestLargeMovement);
+
+*/
+
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+console.log(movements.includes(-130));
+
+// some method me hum check kr skte h ki koi value us array ya object me h ya nhi
+let anyDeposit = movements.some((mov) => mov > 1000);
+console.log(anyDeposit);
+
+// every method returns true if  every element passes a certain situation and false if not 
+
+let everyMethod=movements.every(mov=>mov>2000)
+console.log(everyMethod);
+*/
+
+/*
+
+// let say we have a nested array and we want to convert it into a single array to hum flat method ka use krte har
+let arr=[1,2,3,[4,5,6],[8,9,10]]
+console.log(arr.flat());
+
+// agar nested array ke ander bhi nested array h to flat ke ander ek argument pass krna padega jo ki specify krega ki kitna dep level pr jana h
+let arr2=[1,[2,[3,4]],[5,[6,7]]]
+console.log(arr2.flat());
+console.log(arr2.flat(2));
+
+// let say koi situation h jha pr initially hiumne map function lagaya h and then flat to hum seedha flatmap use kr skte h 
+let overalBalance=accounts.map(mov=>mov.movements).flat().reduce((acc,mov)=>acc+mov,0)
+console.log(overalBalance);
+
+let overalBalance2=accounts.flatMap(acc=>acc.movements).reduce((acc,mov)=>acc+mov,0)
+console.log(overalBalance2);
+*/
+
+// sort method array ko sort krta h as a atring mankar and original array ko bhi muttatae kr deta h 
+
+const owners=['jonas',"adam",'zach',"martha"]
+console.log(owners.sort());
+console.log(owners);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+let sortfun=function(arr){
+  for(let i=0;i<arr.length-1;i++){
+    for(let j=i+1;j<arr.length;j++){
+      if(arr[i]<arr[j])
+      {
+        let temp=arr[j];
+        arr[j]=arr[i];
+        arr[i]=temp;
+      }
+    }
+  }
+  return arr;
+}
+console.log(sortfun(movements));
+
