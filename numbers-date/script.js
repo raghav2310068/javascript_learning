@@ -206,7 +206,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor((inputLoanAmount.value));
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -250,3 +250,85 @@ btnSort.addEventListener('click', function (e) {
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+
+/*
+
+// EVERY NUMBER IN JAVASCRIPT IS STORED AS FLOATING POINT NUMBER 
+// binary base 2 - (0,1) 
+// deciaml base 10 - (0 to 9)
+console.log(23===23.0);
+console.log(0.1+0.2);
+console.log(0.1+0.2===0.3);
+// agar koi numeric string h and hume use nuumber m convert krna h to hum ya to number method ka use kr skte h ya fir seedha +sign lga skte h string se phele
+console.log(Number("23"));
+console.log(+"23");
+
+// parsing 
+ 
+console.log(Number.parseInt('222px'))                // output = 222 
+console.log(Number.parseInt('e23'))                 // output= NaN
+console.log(Number.parseFloat("2.225rem"));        //output : 2.225
+console.log(Number.parseFloat("rem22333"));       //output : NaN
+
+// isNaN => checks if the value is not a  number(NaN)
+
+console.log(Number.isNaN(23));              // output : false
+console.log(Number.isNaN(+"23px"));        // output : true
+console.log(Number.isNaN(+"23"));         // output : false
+console.log(Number.isNaN(23/0));         // output : false
+
+console.log("*******************************");
+
+// isFinite()  ==> checks if the value is a number
+console.log(Number.isFinite(20));              // output: true
+console.log(Number.isFinite(+"20"));          // output: true
+console.log(Number.isFinite(+"20px"));       // output: false
+console.log(Number.isFinite(20/0));         // output: false
+
+*/
+
+//rounding
+console.log(Math.sqrt(25));
+console.log(25**(1/2));
+console.log(8**(1/3));
+
+console.log(Math.max(23,5,89,9,54,65));         //    output:89
+console.log(Math.max(23,5,"89",9,54,65));      //    output:89
+console.log(Math.max(23,5,"89px",9,54,65));   //    output:NaN
+
+console.log(Math.min(23,5,89,9,54,65));         //    output:5
+console.log(Math.min(23,5,"89",9,54,65));      //    output:5
+console.log(Math.min(23,5,"89px",9,54,65));   //    output:NaN
+
+console.log(Math.PI*Number.parseFloat("20px")**2);
+
+// random number
+
+console.log(Math.trunc(Math.random()*6+1));
+const randomInt=(min,max)=>Math.floor(Math.random()*(max-min+1)+min)
+
+console.log(randomInt(10,20));
+console.log(randomInt(0,5));
+
+
+// rounding  
+console.log(Math.trunc(23.4));                //output : 23
+console.log(Math.round(23.3));               //output : 23
+console.log(Math.round(23.9));              //output : 24
+console.log(Math.floor(23.9));             //output : 23
+console.log(Math.floor("23.3"));          //output : 23
+console.log(Math.ceil(23.3));            //output : 24
+console.log(Math.ceil(23.9));           //output : 24
+console.log(Math.trunc(-23.4));        //output : -23
+console.log(Math.floor(-23.3));       //output : -24
+
+// tofixed("argument wo btata h ki kitne decimal places tak answer chahiye")==> string return krta h 
+console.log();
+console.log((2.7).toFixed(0));
+console.log((2.7).toFixed(2));
+console.log((2.735).toFixed(2));
+console.log(Number((2.7).toFixed(0)));
+console.log(Number((2.7).toFixed(2)));
+console.log(Number((2.735).toFixed(2)));
+
+
